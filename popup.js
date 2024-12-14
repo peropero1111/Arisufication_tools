@@ -1,6 +1,5 @@
-let isActive = false; // 상태 추적 변수
+let isActive = false; 
 
-// 버튼 클릭 이벤트
 document.getElementById("toggleButton").addEventListener("click", () => {
     chrome.storage.local.set({ isActive: !isActive }, () => {
         isActive = !isActive;
@@ -13,7 +12,6 @@ document.getElementById("toggleButton").addEventListener("click", () => {
     });
 });
 
-// 활성화 스크립트 실행
 function activateScript() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
@@ -23,7 +21,6 @@ function activateScript() {
     });
 }
 
-// 비활성화 스크립트 실행
 function deactivateScript() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
@@ -33,7 +30,6 @@ function deactivateScript() {
     });
 }
 
-// UI 업데이트 함수
 function updateUI() {
     const statusText = document.getElementById("status");
     const toggleButton = document.getElementById("toggleButton");
@@ -47,7 +43,6 @@ function updateUI() {
     }
 }
 
-// 확장 프로그램 로드 시 상태 확인 및 초기화
 chrome.storage.local.get("isActive", (result) => {
     isActive = result.isActive || false;
     updateUI();
