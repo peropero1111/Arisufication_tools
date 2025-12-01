@@ -10,7 +10,7 @@ document.getElementById("toggleButton").addEventListener("click", () => {
             deactivateScript();
         }
     });
-});  \*비활성&활성 상태 저장(storage.local 사용)*\
+});  /*비활성&활성 상태 저장(storage.local 사용)*/
 
 function activateScript() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
