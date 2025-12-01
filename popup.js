@@ -2,7 +2,7 @@ let isActive = false;
 
 document.getElementById("toggleButton").addEventListener("click", () => {
     chrome.storage.local.set({ isActive: !isActive }, () => {
-        isActive = !isActive;
+        isActive = !isActive; /*초기 실행시 기존값 불러옴 (storage.local 에 기존에 저장된 값 사용)*/
         updateUI();
         if (isActive) {
             activateScript();
@@ -39,7 +39,7 @@ function updateUI() {
         toggleButton.textContent = "Deactivate";
     } else {
         statusText.innerHTML = "Status: <strong>Inactive</strong>";
-        toggleButton.textContent = "Activate";
+        toggleButton.textContent = "Activate"; /*변경 상태 저장*/
     }
 }
 
