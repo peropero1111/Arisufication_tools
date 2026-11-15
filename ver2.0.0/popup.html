@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Arisuchan</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            width: 320px;
+            margin: 0;
+            padding: 16px;
+            color: #242424;
+            font-family: Arial, sans-serif;
+        }
+        h3 { margin: 0 0 8px; }
+        #status { margin: 0 0 12px; }
+        #selectionNote { margin: 0 0 10px; color: #555; font-size: 12px;  border-radius: 50px;}
+        #imageUrlInput {
+            box-sizing: border-box;
+            width: 100%;
+            margin: 0 0 10px;
+            padding: 8px;
+        }
+        #imageList {
+            display: grid;
+            gap: 7px;
+            margin: 0 0 14px;
+            padding: 0;
+            list-style: none;
+        }
+        .image-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .image-item input { flex: none; margin: 0; }
+        .image-preview {
+            width: 54px;
+            height: 38px;
+            flex: none;
+            border-radius: 3px;
+            background: #eee;
+            object-fit: cover;
+        }
+        .actions { display: flex; gap: 8px; }
+
+
+
+.actions button {
+    flex: 1;
+    padding: 9px 8px;
+    cursor: pointer;
+    border-radius: 6px; /* 둥근 모서리 적용 (원하는 곡률로 조절) */
+    border: 1px solid #ccc; /* 필요 시 테두리 정리 */
+}
+
+
+/*이 부분 수정*/
+
+
+        #message { min-height: 16px; margin: 8px 0 0; color: #a32626; }
+    </style>
+</head>
+<body>
+    <h3>Arisufication</h3>
+    <p id="status">상태: 비활성</p>
+    <p id="selectionNote">직접 이미지 URL을 입력하면 해당 주소를 적용합니다. 처음 사용 시 Chrome에서 이미지 서버 접근을 허용해 주세요.</p>
+    <input
+        id="imageUrlInput"
+        type="url"
+        placeholder="사용자 이미지 URL (선택 사항)"
+        aria-label="사용자 이미지 URL"
+    >
+    <ul id="imageList" aria-label="적용할 이미지 선택"></ul>
+    <form id="applyForm" novalidate>
+        <div class="actions">
+            <button id="applyButton" type="submit">선택 이미지 적용</button>
+            <button id="stopButton" type="button" hidden>변환 중지</button>
+        </div>
+    </form>
+    <p id="message" role="alert" aria-live="assertive"></p>
+
+    <script src="images.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
